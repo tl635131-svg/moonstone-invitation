@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nethmi & Kavindu · 13 February 2027</title>
+<meta name="description" content="You are warmly invited to the wedding of Nethmi & Kavindu — Kandy, 13 February 2027.">
+<meta name="theme-color" content="#5A1A1F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500&family=Noto+Serif+Sinhala:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"></div>
+
+<div class="invite" id="invite">
+
+  <!-- ===== persistent UI ===== -->
+  <button class="lang" id="langBtn" aria-label="Switch language"><span data-t="lang">EN</span><i></i><span class="lang__alt">සිං</span></button>
+  <button class="music" id="musicBtn" aria-label="Music" hidden><i></i><i></i><i></i><i></i></button>
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <!-- ===== ACT 1 · the envelope ===== -->
+  <div class="env" id="env" role="button" tabindex="0" aria-label="Open the invitation">
+    <div class="env__stage">
+      <div class="env__inner"></div>
+      <div class="env__card">
+        <div class="env__card-in">
+          <small data-t="blessing">May the Triple Gem bless you</small>
+          <b data-t="name1">Nethmi</b><em data-t="amp">&amp;</em><b data-t="name2">Kavindu</b>
+        </div>
+      </div>
+      <div class="env__pocket"><span class="env__band"></span></div>
+      <div class="env__shade"><i></i></div>
+      <div class="env__flap"><div class="env__flap-face"></div><div class="env__flap-back"></div></div>
+      <svg class="env__edge" viewBox="0 0 100 100" preserveAspectRatio="none"><polyline points="0,6 50,100 100,6" fill="none" stroke="#C9A35D" stroke-width="1.2" vector-effect="non-scaling-stroke" opacity=".9"/></svg>
+      <img class="env__seal" src="assets/orn/seal.webp" alt="">
+      <span class="env__ring"></span>
+      <img class="env__garland" src="assets/orn/garland.webp" alt="">
+    </div>
+    <p class="env__hint"><span data-t="tapOpen">Tap to open</span></p>
+  </div>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero paper">
+      <img class="corner tl" src="assets/orn/corner.webp" alt=""><img class="corner tr" src="assets/orn/corner.webp" alt="">
+      <img class="corner bl" src="assets/orn/corner.webp" alt=""><img class="corner br" src="assets/orn/corner.webp" alt="">
+      <div class="hero__in">
+        <p class="blessing r" data-t="blessing">May the Triple Gem bless you</p>
+        <p class="eyebrow r" data-t="weddingOf">The wedding of</p>
+        <h1 class="names">
+          <span class="r" data-t="name1">Nethmi</span>
+          <em class="r" data-t="amp">&amp;</em>
+          <span class="r" data-t="name2">Kavindu</span>
+        </h1>
+        <p class="hero__date r" data-t="heroDate">Saturday · 13 February 2027</p>
+        <p class="hero__place r" data-t="heroPlace">The Lotus Pavilion · Kandy</p>
+      </div>
+      <div class="lamp lamp--couple r">
+        <img src="assets/orn/hero-couple.webp" alt="The bride and groom lighting the brass oil lamp">
+        <div class="flames" id="flames"></div>
+      </div>
+      <p class="scroll-cue"><span data-t="scroll">Scroll</span><i></i></p>
+    </section>
+
+    <!-- FAMILIES -->
+    <section class="sec paper fam">
+      <img class="divider rv" src="assets/orn/divider.webp" alt="">
+      <p class="eyebrow rv" data-t="famEyebrow">With the blessings of our families</p>
+      <p class="fam__line rv" data-t="famLine1">Mr. &amp; Mrs. Sunil Wijesinghe of Kandy</p>
+      <p class="fam__and rv" data-t="famAnd">and</p>
+      <p class="fam__line rv" data-t="famLine2">Mr. &amp; Mrs. Ranjith Dissanayake of Kurunegala</p>
+      <p class="body rv" data-t="famText">joyfully request the pleasure of your company at the marriage of their daughter and son.</p>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="sec paper cd">
+      <img class="moonstone rv" src="assets/orn/moonstone.webp" alt="">
+      <h2 class="title rv" data-t="cdTitle">Until the auspicious moment</h2>
+      <div class="cd__grid rv" id="countdown">
+        <div><b>0</b><small data-t="cdD">Days</small></div>
+        <div><b>0</b><small data-t="cdH">Hours</small></div>
+        <div><b>0</b><small data-t="cdM">Minutes</small></div>
+        <div><b>0</b><small data-t="cdS">Seconds</small></div>
+      </div>
+      <p class="cd__done" id="cdDone" hidden data-t="cdDone">Today is our day</p>
+    </section>
+
+    <!-- NEKATH (dark band) -->
+    <section class="sec maroon nek">
+      <span class="band-edge top"></span>
+      <p class="eyebrow eyebrow--gold rv" data-t="nekSub">Subha Nekatha</p>
+      <h2 class="title title--light rv" data-t="nekTitle">Auspicious time</h2>
+      <div class="nek__card rv">
+        <p class="nek__label" data-t="nekPoruwa">Ascending the Poruwa</p>
+        <p class="nek__time" data-t="nekTime">9.41 a.m.</p>
+        <div class="nek__row"><span data-t="nekFace">Facing East</span><i>✦</i><span data-t="nekColour">Dressed in white</span></div>
+      </div>
+      <p class="body body--light rv" data-t="nekNote">Kindly be seated by 9.15 a.m.</p>
+      <span class="band-edge bottom"></span>
+    </section>
+
+    <!-- CEREMONY -->
+    <section class="sec paper cer">
+      <h2 class="title rv" data-t="cerTitle">The ceremony</h2>
+      <div class="vignette rv"><img src="assets/art/venue.webp" alt="Watercolour of the lakeside pavilion"></div>
+      <p class="script rv" data-t="cerVenue">The Lotus Pavilion</p>
+      <p class="small-caps rv" data-t="cerAddr">Kandy Lake, Kandy</p>
+      <p class="body rv" data-t="cerWhen">Saturday, 13 February 2027 · from 8.30 a.m.</p>
+      <div class="links rv">
+        <a class="link" id="mapWed" target="_blank" rel="noopener" data-t="maps">Open in Maps</a>
+        <button class="link" data-ics="wedding" data-t="cal">Add to calendar</button>
+      </div>
+    </section>
+
+    <!-- PORUWA CUSTOMS -->
+    <section class="sec paper poruwa">
+      <img class="divider rv" src="assets/orn/divider.webp" alt="">
+      <h2 class="title rv" data-t="poTitle">The Poruwa ceremony</h2>
+      <p class="body rv" data-t="poIntro">A few cherished customs you will witness on our day.</p>
+      <div class="vignette vignette--sm rv"><img src="assets/art/poruwa.webp" alt="Watercolour of a decorated Poruwa"></div>
+      <ol class="customs">
+        <li class="rv"><i>I</i><div><b data-t="po1"></b><span data-t="po1d"></span></div></li>
+        <li class="rv"><i>II</i><div><b data-t="po2"></b><span data-t="po2d"></span></div></li>
+        <li class="rv"><i>III</i><div><b data-t="po3"></b><span data-t="po3d"></span></div></li>
+        <li class="rv"><i>IV</i><div><b data-t="po4"></b><span data-t="po4d"></span></div></li>
+        <li class="rv"><i>V</i><div><b data-t="po5"></b><span data-t="po5d"></span></div></li>
+      </ol>
+    </section>
+
+    <!-- STORY + SCRATCH -->
+    <section class="sec paper story">
+      <h2 class="title rv" data-t="storyTitle">Our story</h2>
+      <div class="arch rv"><img src="assets/art/story.webp" alt="The couple on a train through the tea hills"></div>
+      <p class="body rv" data-t="storyText"></p>
+      <h3 class="subtitle rv" data-t="scratchTitle">A little surprise</h3>
+      <div class="scratch rv" id="scratch">
+        <img src="assets/art/couple.webp" alt="Nethmi and Kavindu">
+        <canvas id="scratchCanvas"></canvas>
+        <div class="burst" id="burst"></div>
+      </div>
+      <p class="hint rv" data-t="scratchHint">Scratch the gold to reveal</p>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="sec paper tl">
+      <img class="divider rv" src="assets/orn/divider.webp" alt="">
+      <h2 class="title rv" data-t="tlTitle">The day</h2>
+      <ul class="timeline">
+        <li class="rv"><time>8.30</time><span class="medal"><img src="assets/icons/king-coconut.webp" alt=""></span><div><b data-t="tl1"></b><small data-t="tl1d"></small></div></li>
+        <li class="rv hl"><time>9.41</time><span class="medal"><img src="assets/icons/oil-lamp.webp" alt=""></span><div><b data-t="tl2"></b><small data-t="tl2d"></small></div></li>
+        <li class="rv"><time>10.30</time><span class="medal"><img src="assets/icons/register.webp" alt=""></span><div><b data-t="tl3"></b><small data-t="tl3d"></small></div></li>
+        <li class="rv"><time>11.00</time><span class="medal"><img src="assets/icons/camera.webp" alt=""></span><div><b data-t="tl4"></b><small data-t="tl4d"></small></div></li>
+        <li class="rv"><time>12.30</time><span class="medal"><img src="assets/icons/lunch.webp" alt=""></span><div><b data-t="tl5"></b><small data-t="tl5d"></small></div></li>
+        <li class="rv"><time>14.30</time><span class="medal"><img src="assets/icons/going-away.webp" alt=""></span><div><b data-t="tl6"></b><small data-t="tl6d"></small></div></li>
+      </ul>
+    </section>
+
+    <!-- HOMECOMING (dark band) -->
+    <section class="sec maroon hc">
+      <span class="band-edge top"></span>
+      <h2 class="title title--light rv" data-t="hcTitle">Homecoming</h2>
+      <div class="vignette vignette--dark rv"><img src="assets/art/homecoming.webp" alt="Watercolour of the evening reception"></div>
+      <p class="script script--light rv" data-t="hcVenue">The Royal Ballroom</p>
+      <p class="small-caps small-caps--light rv" data-t="hcAddr">Galle Face, Colombo 03</p>
+      <p class="body body--light rv" data-t="hcWhen"></p>
+      <p class="body body--light rv" data-t="hcText"></p>
+      <div class="links rv">
+        <a class="link link--light" id="mapHome" target="_blank" rel="noopener" data-t="maps">Open in Maps</a>
+        <button class="link link--light" data-ics="homecoming" data-t="cal">Add to calendar</button>
+      </div>
+      <span class="band-edge bottom"></span>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="sec paper dress">
+      <h2 class="title rv" data-t="dressTitle">Dress code</h2>
+      <p class="script rv" data-t="dressSub">Traditional or formal</p>
+      <div class="vignette vignette--wide rv"><img src="assets/art/dress.webp" alt="Guests in Kandyan sarees and national dress"></div>
+      <div class="swatches rv"><i style="--c:#FFFDF7"></i><i style="--c:#F3E6D3"></i><i style="--c:#E9D2CF"></i><i style="--c:#DCE6DA"></i><i style="--c:#C9A35D"></i></div>
+      <p class="body rv" data-t="dressText"></p>
+    </section>
+
+    <!-- TRANSPORT + STAY -->
+    <section class="sec paper stay">
+      <img class="divider rv" src="assets/orn/divider.webp" alt="">
+      <h2 class="title rv" data-t="trTitle">Transport</h2>
+      <p class="body rv" data-t="trText"></p>
+      <h2 class="title rv" data-t="stayTitle" style="margin-top:56px">Where to stay</h2>
+      <p class="body rv" data-t="stayText"></p>
+      <div class="hotels" id="hotels"></div>
+    </section>
+
+    <!-- GIFTS -->
+    <section class="sec paper gift">
+      <h2 class="title rv" data-t="giftTitle">Gifts</h2>
+      <div class="flip rv" id="flip" role="button" tabindex="0">
+        <div class="flip__in">
+          <div class="flip__front"><img src="assets/orn/seal.webp" alt=""><span data-t="giftTap">Tap to read</span></div>
+          <div class="flip__back">
+            <p data-t="giftText"></p>
+            <p class="bank"><span data-t="giftBank"></span><b data-t="giftAcc"></b></p>
+            <button class="link" id="copyBtn" data-t="copy">Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP (dark band) -->
+    <section class="sec maroon rsvp" id="rsvp">
+      <span class="band-edge top"></span>
+      <h2 class="title title--light rv" data-t="rsvpTitle">Kindly reply</h2>
+      <p class="small-caps small-caps--light rv" data-t="rsvpBy">by 15 January 2027</p>
+      <form class="form rv" id="rsvpForm" novalidate>
+        <label><span data-t="fName">Full name</span><input name="name" required autocomplete="name"></label>
+        <label><span data-t="fPhone">Phone number</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel"></label>
+        <fieldset><legend data-t="fAttend">Will you join us?</legend>
+          <label class="opt"><input type="radio" name="attend" value="both" required><span data-t="aBoth"></span></label>
+          <label class="opt"><input type="radio" name="attend" value="wedding"><span data-t="aWed"></span></label>
+          <label class="opt"><input type="radio" name="attend" value="homecoming"><span data-t="aHome"></span></label>
+          <label class="opt"><input type="radio" name="attend" value="no"><span data-t="aNo"></span></label>
+        </fieldset>
+        <div class="row">
+          <label><span data-t="fGuests">Number of guests</span>
+            <div class="stepper"><button type="button" data-step="-1" aria-label="Fewer">−</button><input name="guests" value="1" readonly><button type="button" data-step="1" aria-label="More">+</button></div>
+          </label>
+          <label><span data-t="fDiet">Dietary needs</span><select name="diet"><option value="none" data-t="dNone"></option><option value="veg" data-t="dVeg"></option><option value="other" data-t="dOther"></option></select></label>
+        </div>
+        <label class="opt opt--check"><input type="checkbox" name="coach"><span data-t="fCoach"></span></label>
+        <label><span data-t="fNote">A message for us</span><textarea name="note" rows="3"></textarea></label>
+        <button class="btn" type="submit" data-t="send">Send reply</button>
+      </form>
+      <div class="sent" id="sent" hidden>
+        <img src="assets/orn/seal.webp" alt="">
+        <h3 data-t="thanks">Thank you!</h3>
+        <p data-t="thanksText"></p>
+        <button class="link link--light" id="editRsvp" data-t="edit">Change my reply</button>
+      </div>
+      <span class="band-edge bottom"></span>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="sec paper closing">
+      <img class="lotus rv" src="assets/orn/lotus-bowl.webp" alt="">
+      <p class="eyebrow rv" data-t="closeText">With love and gratitude</p>
+      <p class="names names--sm rv"><span data-t="name1">Nethmi</span> <em data-t="amp">&amp;</em> <span data-t="name2">Kavindu</span></p>
+      <p class="script rv" data-t="thankYou">Thank you</p>
+      <p class="demo" data-t="demo">Demo invitation · fictional couple</p>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
