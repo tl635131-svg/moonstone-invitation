@@ -97,16 +97,61 @@
     if (on) { ctx.resume(); restartMelody(); }
   }
   let restartMelody = () => {};
-  $('#musicBtn').addEventListener('click', () => { setMusic(!playing); store.set('muted', !playing); });
+  $('#musicBtn').addEventListener('click', () => {
+    setMusic(!playing); store.set('muted', !playing);
+    const f = document.getElementById('envFilm'); if (f) f.muted = !playing;
+  });
 
   /* ---------------- opening ---------------- */
   const env = $('#env');
   document.body.classList.add('locked');
   let opened = false;
   const after = (ms, fn) => setTimeout(fn, reduce ? 0 : ms);
+  function reveal() {   // shared ending: envelope layer fades into the hero
+    env.classList.add('s5'); document.body.classList.remove('locked'); document.body.classList.add('opened');
+    after(900, () => { env.remove(); document.body.classList.add('lit'); startPetals(); });
+  }
+
+  /* filmed opening (Google Flow clip). The paper envelope stays as the fallback. */
+  const film = $('#envFilm');
+  let filmOn = !!film && !reduce && film.canPlayType('video/mp4') !== '';
+  if (filmOn) {
+    env.classList.add('env--film');
+    film.addEventListener('error', () => { if (!opened) dropFilm(); }, true);
+  }
+  function dropFilm() { filmOn = false; env.classList.remove('env--film', 'named'); if (film) { film.pause(); film.remove(); } }
+
+  let filmDone = false;
+  function finishFilm() {
+    if (filmDone) return; filmDone = true;
+    env.classList.add('named');
+    after(1100, reveal);
+  }
+  function playFilm() {
+    env.classList.add('s1');
+    film.muted = store.get('muted', false);
+    film.volume = 0.85;
+    let started = false;
+    const stall = setTimeout(() => { if (!started) { dropFilm(); cssOpen(); } }, 3500);
+    film.addEventListener('playing', () => { started = true; clearTimeout(stall); }, { once: true });
+    film.addEventListener('timeupdate', () => {
+      if (film.duration && film.currentTime > film.duration - 1.5) env.classList.add('named');
+    });
+    film.addEventListener('ended', finishFilm, { once: true });
+    const p = film.play();
+    if (p && p.catch) p.catch(() => { film.muted = true; film.play().catch(() => { clearTimeout(stall); dropFilm(); cssOpen(); }); });
+    // a second tap skips to the names
+    env.addEventListener('click', () => {
+      if (started && !filmDone && film.duration && film.currentTime < film.duration - 1.2) film.currentTime = film.duration - 1.2;
+    });
+  }
+
   function open() {
     if (opened) return; opened = true;
     if (!store.get('muted', false)) startMusic();
+    if (filmOn) playFilm(); else cssOpen();
+  }
+  function cssOpen() {
     env.classList.add('s1');
     after(450, () => env.classList.add('s2'));
     after(950, () => env.classList.add('s3'));

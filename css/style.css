@@ -101,6 +101,25 @@ html[lang=si] .env__hint{font-family:var(--si);letter-spacing:.04em;font-size:14
 .env.s4c .env__card::before{inset:18px}
 .env.s5{opacity:0;transform:translateX(-50%) scale(1.08);pointer-events:none}
 
+/* ===== filmed opening (Flow video); the paper envelope above is the fallback ===== */
+.env__film,.env__names{display:none}
+.env--film{background:#2b0c10}
+.env--film .env__stage{display:none}
+.env--film .env__film{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#2b0c10 url(../assets/film/poster.webp) center/cover;animation:filmBreathe 7s ease-in-out infinite;transform-origin:50% 45%}
+.env--film.s1 .env__film{animation:none;transform:none;transition:transform .6s var(--ease)}
+@keyframes filmBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.env--film::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;z-index:2;pointer-events:none;background:linear-gradient(transparent,rgba(30,6,9,.72));transition:opacity .5s}
+.env--film.s1::after{opacity:0}
+.env--film .env__hint{z-index:3;color:var(--gold-4);text-shadow:0 1px 10px rgba(0,0,0,.55)}
+.env--film.s1 .env__hint{opacity:0;animation:none}
+.env--film .env__names{display:flex;position:absolute;inset:0;z-index:3;flex-direction:column;align-items:center;justify-content:center;padding-bottom:6%;color:var(--maroon);text-align:center;opacity:0;transform:translateY(14px);filter:blur(4px);transition:opacity 1.1s var(--ease),transform 1.3s var(--ease),filter 1.1s var(--ease);pointer-events:none}
+.env__names small{font-family:var(--sans);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.env__names b{font-family:var(--script);font-weight:400;font-size:clamp(52px,15vw,68px);line-height:1}
+.env__names em{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:26px;margin:6px 0}
+html[lang=si] .env__names b{font-family:var(--si);font-weight:600;font-size:clamp(40px,11vw,50px);line-height:1.25}
+html[lang=si] .env__names small{font-family:var(--si);letter-spacing:.04em;font-size:14px;text-transform:none}
+.env--film.named .env__names{opacity:1;transform:none;filter:none}
+
 /* ---------------- shared section styles ---------------- */
 .paper{background:linear-gradient(rgba(251,246,236,.55),rgba(246,237,220,.55)),url(../assets/tex/paper.webp) center/600px auto repeat}
 .maroon{position:relative;color:var(--gold-4);background:
